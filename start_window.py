@@ -1,5 +1,6 @@
 import tkinter as tk
 import tkinter.ttk as ttk
+from views.search_frame import SearchFrame
 from tkinter import messagebox
 
 
@@ -20,6 +21,8 @@ class LibraryApplication(tk.Tk):
         
         # Insert File Menu
         menubar.add_cascade(label='File', menu=file_menu)
+        
+        self.search_frame = SearchFrame(self)
         
         # Closing the window
         self.protocol("WM_DELETE_WINDOW", self.ask_exit_confirmation)
