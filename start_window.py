@@ -22,6 +22,9 @@ class LibraryApplication(tk.Tk):
         # Insert File Menu
         menubar.add_cascade(label='File', menu=file_menu)
         
+        # Load the search frame
+        self.columnconfigure(0, weight=1)
+        self.rowconfigure(0, weight=1)
         self.search_frame = SearchFrame(self)
         
         # Closing the window
@@ -29,6 +32,7 @@ class LibraryApplication(tk.Tk):
         
         # Start the main loop
         self.mainloop()
+
 
     def ask_exit_confirmation(self) -> None:
         """Ask the user to confirm exit from the program."""
