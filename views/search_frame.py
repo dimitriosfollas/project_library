@@ -5,7 +5,7 @@ class SearchFrame(ttk.Frame):
     """  """
     def __init__(self, parent):
         super().__init__(parent)
-        self.configure(relief='groove', padding=(100, 10))
+        self.configure(relief='groove', padding=(10, 10))
         self.grid(row=0, column=0, sticky='nwes', ipady=30)
         
         self.rowconfigure(0, weight=1)
@@ -23,7 +23,7 @@ class SearchFrame(ttk.Frame):
         # Create the search box
         self.cb_search_by = ttk.Combobox(self, values=["Member ID", "Member Name", "Book ISBN", "Book Title", "Loaned Book Title", "Surname of Lender"], state="readonly")
         self.cb_search_by.set("Member ID")        
-        self.cb_search_by.bind("<<ComboboxSelected>>", self.load_unter_layout) 
+        self.cb_search_by.bind("<<ComboboxSelected>>", self.load_layout) 
         self.cb_search_by.grid(row=0, column=2, padx=10)
         self.cb_search_by.configure(font=("Arial", 12))
                
@@ -38,12 +38,12 @@ class SearchFrame(ttk.Frame):
         self.button_search.configure(font=("Arial", 12))
         
         self.results_frame = ttk.Frame(self)
-        self.results_frame.grid(row=2, column=0, columnspan=7, padx=10, pady=10, sticky="nswe")
+        self.results_frame.grid(row=2, column=0, columnspan=6, padx=10, pady=10, sticky="nswe")
         
-        self.load_unter_layout(None)
+        self.load_layout(None)
         
     
-    def load_unter_layout(self, event):
+    def load_layout(self, event):
         """Φορτώνει το layout του πλαισίου αποτελεσμάτων ανάλογα με το κριτήριο αναζήτησης."""
         
         colu_names = ()
@@ -77,7 +77,7 @@ class SearchFrame(ttk.Frame):
                 self.edit_book_button = tk.Button(self.results_frame, text="Change book details ", command=lambda: self.edit_book(), font=("Arial", 10))
                 self.edit_book_button.grid(row=2, column=1, columnspan=2, pady=10, padx=10)
                 self.loan_book_button = tk.Button(self.results_frame, text="Book loan", command=lambda: self.loan_book(self.results_tree), font=("Arial", 10))
-                self.loan_book_button.grid(row=2, column=1, columnspan=2, pady=10, padx=10)
+                self.loan_book_button.grid(row=2, column=3, columnspan=2, pady=10, padx=10)
                 #self.return_book_button = tk.Button(self.results_frame, text="Επιστροφή βιβλίου", command=lambda: self.return_book(), font=("Arial", 10))
                 #self.return_book_button.grid(row=2, column=3, pady=10, padx=10)
                 self.delete_book_button = tk.Button(self.results_frame, text="Delete Book", command=lambda: self.delete_book(), font=("Arial", 10))
@@ -91,15 +91,15 @@ class SearchFrame(ttk.Frame):
                 self.return_book_button = tk.Button(self.results_frame, text="Return book", command=lambda: self.return_loan(self.results_tree), font=("Arial", 10))
                 self.return_book_button.grid(row=2, column=1, pady=10, padx=10)
                 self.extend_loan_button = tk.Button(self.results_frame, text="Extend loan", command=lambda: self.extend_loan(self.results_tree), font=("Arial", 10))
-                self.extend_loan_button.grid(row=2, column=2, pady=10, padx=10)
+                self.extend_loan_button.grid(row=2, column=3, pady=10, padx=10)
 
-            self.results_tree = ttk.Treeview(self.results_frame, columns=colu_names, show="headings", selectmode="browse")
+            self.results_tree = ttk.Treeview(master=self.results_frame, columns=colu_names, show="headings", selectmode="browse")
 
             for c in colu_names:
                 self.results_tree.heading(c, text=c)
-                self.results_tree.column(c, anchor="center", width=100, minwidth=100, stretch=True)
+                self.results_tree.column(c, anchor="center", minwidth=100, stretch=True)
             
-            self.results_tree.grid(row=3, column=0, columnspan=7, padx=10, pady=10, sticky="nswe")
+            self.results_tree.grid(row=3, column=0, columnspan=6, padx=10, pady=10)
             
             #scrollbar = ttk.Scrollbar(self.results_frame, orient="vertical", command=self.results_tree.yview)
             #scrollbar.grid(row=3, column=6, sticky="ns")
