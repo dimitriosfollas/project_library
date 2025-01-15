@@ -1,7 +1,7 @@
 # Lending Library Management System
 
 ## Description
-This small programming project started as a group assignment during the academic year 2023-2024 for the PLIPRO module of the [Hellenic Open University](https://www.eap.gr/). Unfortunately, it was more of an individual assignment.
+This small programming project started as a group assignment during the academic year 2023-2024 for the PLIPRO module at the [Hellenic Open University](https://www.eap.gr/). Unfortunately, it was more of an individual assignment.
 
 ## Requirements
 The aim of the project was to create a lending library management system using the Python programming language. The requirements of the system were to manage:

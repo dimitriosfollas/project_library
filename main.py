@@ -1,6 +1,6 @@
-from start_window import LibraryApplication
+import start_window
 
 def main():
-    app = LibraryApplication
+    app = start_window.LibraryApplication()
     
 main()
