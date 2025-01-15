@@ -36,7 +36,6 @@ class LibraryApplication(tk.Tk):
 
     def ask_exit_confirmation(self) -> None:
         """Ask the user to confirm exit from the program."""
-        
         if messagebox.askokcancel("Exit", "Are you sure you want to exit?", icon='warning'):
             self.destroy()
         else:

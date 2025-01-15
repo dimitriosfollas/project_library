@@ -11,25 +11,25 @@ class SearchFrame(ttk.Frame):
         self.rowconfigure(0, weight=1)
         self.rowconfigure(1, weight=1)
         self.rowconfigure(2, weight=25)
-        #[self.columnconfigure(i, weight=1) for i in range(6)]
-        self.columnconfigure(0, weight=1)
-        self.columnconfigure(7, weight=1)
+        #[self.columnconfigure(i, weight=1) for i in range(7)]
+        self.columnconfigure(0, weight=3)
+        self.columnconfigure(6, weight=3)
         
         # Create the search label
         self.label_search_by = tk.Label(master=self, text="Search by:")
-        self.label_search_by.grid(row=0, column=1, padx=10)
+        self.label_search_by.grid(row=0, column=0, padx=10)
         self.label_search_by.configure(font=("Arial", 12))
         
         # Create the search box
         self.cb_search_by = ttk.Combobox(self, values=["Member ID", "Member Name", "Book ISBN", "Book Title", "Loaned Book Title", "Surname of Lender"], state="readonly")
         self.cb_search_by.set("Member ID")        
-        self.cb_search_by.bind("<<ComboboxSelected>>", self.load_layout) 
-        self.cb_search_by.grid(row=0, column=2, padx=10)
+        self.cb_search_by.bind("<<ComboboxSelected>>", print("Selected")) 
+        self.cb_search_by.grid(row=0, column=1, padx=10)
         self.cb_search_by.configure(font=("Arial", 12))
                
         # Create the search entry
         self.entry_id = tk.Entry(master=self)
-        self.entry_id.grid(row=0, column=3, columnspan=3, padx=10)
+        self.entry_id.grid(row=0, column=2, columnspan=3, padx=10)
         self.entry_id.configure(font=("Arial", 12))
 
         # Create the search button
@@ -40,7 +40,7 @@ class SearchFrame(ttk.Frame):
         self.results_frame = ttk.Frame(self)
         self.results_frame.grid(row=2, column=0, columnspan=6, padx=10, pady=10, sticky="nswe")
         
-        self.load_layout(None)
+        #self.load_layout(None)
         
     
     def load_layout(self, event):
